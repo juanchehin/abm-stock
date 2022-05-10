@@ -1,10 +1,10 @@
 export class Itemventa {
-    idarticulo: number;
-    renglon: number;
-    cantidad: number;
-    codigoproducto: String;
-    descripcion: String;
-    preciounitario: number;
-    iva: number;
-    subtotal: number;
+    idarticulo: number | undefined;
+    renglon: number | undefined;
+    cantidad: number | undefined;
+    codigoproducto: String | undefined;
+    descripcion: String | undefined;
+    preciounitario: number | undefined;
+    iva: number | undefined;
+    subtotal: number | undefined;
 }

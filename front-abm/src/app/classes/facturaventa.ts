@@ -1,15 +1,15 @@
 import { Itemventa } from './itemventa';
 
 export class Facturaventa {
-    id: number;
-    puntoventa: number;
-    numero: number;
-    tipo: String;
-    fecha: String;
-    total: number;
-    iva21: number;
-    iva10: number;
-    subtotaliva: number;
-    items: Itemventa[];
-    clienteId: number;
+    id: number | undefined;
+    puntoventa: number | undefined;
+    numero: number | undefined;
+    tipo: String | undefined;
+    fecha: String | undefined;
+    total: number | undefined;
+    iva21: number | undefined;
+    iva10: number | undefined;
+    subtotaliva: number | undefined;
+    items: Itemventa[] | undefined;
+    clienteId: number | undefined;
 }

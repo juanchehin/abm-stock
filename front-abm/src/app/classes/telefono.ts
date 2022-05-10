@@ -1,6 +1,6 @@
 export class Telefono {
-    id: number;
-    numero: String;
-    contacto: String;
-    nota: String;
+    id: number | undefined;
+    numero: String | undefined;
+    contacto: String | undefined;
+    nota: String | undefined;
 }

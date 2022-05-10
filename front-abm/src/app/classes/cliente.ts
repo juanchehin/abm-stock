@@ -2,10 +2,10 @@ import { Telefono } from './telefono';
 import { Facturaventa } from './facturaventa';
 
 export class Cliente {
-    id: number;
-    razonsocial: String;
-    cuit: String;
-    condicioniva: String;
-    telefonos: [Telefono];
-    facturas: [Facturaventa];
+    id: number | undefined;
+    razonsocial: String | undefined;
+    cuit: String | undefined;
+    condicioniva: String | undefined;
+    telefonos: [Telefono] | undefined;
+    facturas: [Facturaventa] | undefined;
 }

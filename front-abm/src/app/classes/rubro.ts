@@ -1,4 +1,4 @@
 export class Rubro {
-    id: number;
-    nombre: String;
+    id: number | undefined;
+    nombre: String | undefined;
 }

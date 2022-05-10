@@ -1,7 +1,7 @@
 export class Usuario {
-    usuario: String;
-    clave: String;
-    rol: String;
+    usuario: String | undefined;
+    clave: String | undefined;
+    rol: String | undefined;
 
     constructor() {
         this.rol = 'N';

@@ -15,17 +15,17 @@
         <div class="example-container">
             <h4>Artículos a Facturar</h4>
 
-            <div cdkDropList #todoList="cdkDropList" [cdkDropListData]="articulos" [cdkDropListConnectedTo]="[doneList]" class="example-list" (cdkDropListDropped)="drop($event)">
+            <!-- <div cdkDropList #todoList="cdkDropList" [cdkDropListData]="articulos" [cdkDropListConnectedTo]="[doneList]" class="example-list" (cdkDropListDropped)="drop($event)">
                 <div class="example-box" *ngFor="let a of articulos" cdkDrag>{{ a.nombre}}</div>
-            </div>
+            </div> -->
         </div>
 
         <div class="example-container">
             <h4>Artículos en Stock</h4>
 
-            <div cdkDropList #doneList="cdkDropList" [cdkDropListData]="stockActual" [cdkDropListConnectedTo]="[todoList]" class="example-list" (cdkDropListDropped)="drop($event)">
+            <!-- <div cdkDropList #doneList="cdkDropList" [cdkDropListData]="stockActual" [cdkDropListConnectedTo]="[todoList]" class="example-list" (cdkDropListDropped)="drop($event)">
                 <div class="example-box" *ngFor="let a of stockActual" cdkDrag>{{ a.nombre }}</div>
-            </div>
+            </div> -->
         </div>
     </div>
 

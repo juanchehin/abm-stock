@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { DataService } from '../../services/data.service';
-import { Proveedor } from '../../classes/proveedor';
 import { Facturacompra } from '../../classes/facturacompra';
 import { FormGroup, FormControl } from '@angular/forms';
 
