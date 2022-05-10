@@ -5,8 +5,10 @@ import { ActivatedRoute } from '@angular/router';
 import { Facturaventa } from 'src/app/classes/facturaventa';
 import { Cliente } from 'src/app/classes/cliente';
 
+import { pdfMake } from 'pdfmake/build/pdfmake.js';
+
 // para generar pdfs lado cliente
-const pdfMake = require('pdfmake/build/pdfmake.js');
+// const pdfMake = require('pdfmake/build/pdfmake.js');
 const pdfFonts = require('pdfmake/build/vfs_fonts.js');
 pdfMake.vfs = pdfFonts.pdfMake.vfs;
 

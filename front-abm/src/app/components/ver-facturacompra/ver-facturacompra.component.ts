@@ -17,11 +17,11 @@ pdfMake.vfs = pdfFonts.pdfMake.vfs;
 })
 export class VerFacturacompraComponent implements OnInit {
 
-  factura: Facturacompra;
-  prov: Proveedor;
+  factura: any;
+  prov: any;
   titulo = '';
   coniva = false;
-  factura_PDF;
+  factura_PDF: any;
 
   // https://developer.mozilla.org/es/docs/Web/JavaScript/Referencia/Objetos_globales/NumberFormat
   Moneda = new Intl.NumberFormat('es-AR', {
@@ -36,8 +36,8 @@ export class VerFacturacompraComponent implements OnInit {
   constructor(private dataSrv: DataService, private ruta: ActivatedRoute) { }
 
   ngOnInit() {
-    this.dataSrv.getFacturaProveedor(+this.ruta.snapshot.paramMap.get('id')).subscribe(
-      (f: Facturacompra) => {
+    this.dataSrv.getFacturaProveedor(+this.ruta.snapshot.paramMap.get('id')!).subscribe(
+      (f: any) => {
         this.factura = f;
         this.dataSrv.getProveedor(+f.proveedorId).subscribe((p: Proveedor) => { this.prov = p; });
         this.calculaFactura();
@@ -233,12 +233,12 @@ export class VerFacturacompraComponent implements OnInit {
 
   }
 
-  private formatoNroFactura(sucursal, numero) {
+  private formatoNroFactura(sucursal: any, numero: any) {
     return ('0000' + sucursal).substr(-4) + '-' + ('00000000' + numero).substr(-8);
   }
 
 
-  private formatoFecha(date) {
+  private formatoFecha(date: any) {
     return new Intl.DateTimeFormat('es-AR').format(new Date(date));
 
     /*  const d = new Date(date);
@@ -262,7 +262,7 @@ export class VerFacturacompraComponent implements OnInit {
     header.push({ text: 'IVA %', style: 'tableHeader' });
     header.push({ text: 'Subtotal', style: 'tableHeader' });
     todoslositems.push(header);
-    this.factura.items.forEach(function (item) {
+    this.factura.items.forEach( (item: any) => {
       const unItem = [];
       unItem.push({ text: item.cantidad });
       unItem.push({ text: item.codigoproducto });
