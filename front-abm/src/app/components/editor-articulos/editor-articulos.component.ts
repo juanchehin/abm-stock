@@ -1,22 +1,22 @@
 import { Component, OnInit } from '@angular/core';
-import { Articulo } from 'src/app/classes/articulo';
-import { DataService } from 'src/app/services/data.service';
+import { Articulo } from '../../classes/articulo';
+import { DataService } from '../../services/data.service';
 import { ActivatedRoute, Router } from '@angular/router';
-import { AuthService } from 'src/app/services/auth.service';
-import { Rubro } from 'src/app/classes/rubro';
+import { AuthService } from '../../services/auth.service';
+import { Rubro } from '../../classes/rubro';
 import { FormGroup, FormBuilder, FormControl, ReactiveFormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-editor-articulos',
   templateUrl: './editor-articulos.component.html',
-  styleUrls: ['./editor-articulos.component.css']
+  styleUrls: []
 })
 export class EditorArticulosComponent implements OnInit {
   articuloForm = new FormGroup({ rubroControl: new FormControl() });
-  art: Articulo;
+  art: any;
   nuevo = false;
   titulo = '';
-  rubros: Rubro[];
+  rubros: any;
   enviado = false;
   admin = true;
 
@@ -26,7 +26,7 @@ export class EditorArticulosComponent implements OnInit {
     private ruta: ActivatedRoute,
     private router: Router, private authSrv: AuthService) {
 
-    this.dataSrv.getRubros().subscribe((r: Rubro[]) => {
+    this.dataSrv.getRubros().subscribe((r: any) => {
       this.rubros = r;
     });
   }
@@ -48,7 +48,7 @@ export class EditorArticulosComponent implements OnInit {
       // console.log(this.art);
       this.titulo = 'Nuevo Articulo';
     } else {
-      this.dataSrv.getArticulo(+this.ruta.snapshot.paramMap.get('id')).subscribe(
+      this.dataSrv.getArticulo(+this.ruta.snapshot.paramMap.get('id')!).subscribe(
         (a: Articulo) => {
           this.art = a;
           this.articuloForm.controls['rubroControl'].setValue(this.art.rubro.id);
@@ -62,7 +62,7 @@ export class EditorArticulosComponent implements OnInit {
   confirmado() {
     this.enviado = true;
     const i = this.articuloForm.controls['rubroControl'].value;
-    this.art.rubro = this.rubros.find(r => r.id === i);
+    this.art.rubro = this.rubros.find((r: any) => r.id === i);
     if (this.art.id !== -1) {
       this.guardarArticulo(); // put
     } else {

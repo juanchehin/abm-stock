@@ -1,16 +1,16 @@
 import { Component, OnInit } from '@angular/core';
-import { Articulo } from 'src/app/classes/articulo';
-import { DataService } from 'src/app/services/data.service';
+import { Articulo } from '../../classes/articulo';
+import { DataService } from '../../services/data.service';
 import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-borrar-articulos',
   templateUrl: './borrar-articulos.component.html',
-  styleUrls: ['./borrar-articulos.component.css']
+  styleUrls: []
 })
 export class BorrarArticulosComponent implements OnInit {
 
-  art: Articulo;
+  art: any;
   titulo = '';
 
   constructor(
@@ -19,7 +19,7 @@ export class BorrarArticulosComponent implements OnInit {
     private router: Router) { }
 
   ngOnInit() {
-    this.dataSrv.getArticulo(+this.ruta.snapshot.paramMap.get('id')).subscribe(
+    this.dataSrv.getArticulo(+this.ruta.snapshot.paramMap.get('id')!).subscribe(
       (a: Articulo) => {
         this.art = a;
       },

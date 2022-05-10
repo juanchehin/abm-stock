@@ -1,19 +1,19 @@
 import { Component, OnInit } from '@angular/core';
-import { Cliente } from 'src/app/classes/cliente';
+import { Cliente } from '../../classes/cliente';
 import { FormBuilder, FormGroup, FormControl } from '@angular/forms';
-import { DataService } from 'src/app/services/data.service';
+import { DataService } from '../../services/data.service';
 import { ActivatedRoute, Router } from '@angular/router';
-import { AuthService } from 'src/app/services/auth.service';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-editor-clientes',
   templateUrl: './editor-clientes.component.html',
-  styleUrls: ['./editor-clientes.component.css']
+  styleUrls: []
 })
 export class EditorClientesComponent implements OnInit {
 
   clienteForm = new FormGroup({ ivaControl: new FormControl() });
-  cli: Cliente;
+  cli: any;
   nuevo = false;
   titulo = '';
   enviado = false;
@@ -38,7 +38,7 @@ export class EditorClientesComponent implements OnInit {
       // Fijamos condicion de iva en RI
       this.clienteForm.controls['ivaControl'].setValue('Responsable Inscripto');
     } else {
-      this.dataSrv.getCliente(+this.ruta.snapshot.paramMap.get('id')).subscribe(
+      this.dataSrv.getCliente(+this.ruta.snapshot.paramMap.get('id')!).subscribe(
         (c) => {
           this.cli = c;
           this.clienteForm.controls['ivaControl'].setValue(c.condicioniva);

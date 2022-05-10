@@ -3,12 +3,12 @@
 
 import { Component, OnInit, NgModule } from '@angular/core';
 import { CdkDragDrop, moveItemInArray, transferArrayItem } from '@angular/cdk/drag-drop';
-import { DataService } from 'src/app/services/data.service';
-import { Articulo } from 'src/app/classes/articulo';
-import { Proveedor } from 'src/app/classes/proveedor';
+import { DataService } from '../../services/data.service';
+import { Articulo } from '../../classes/articulo';
+import { Proveedor } from '../../classes/proveedor';
 import { FormGroup, FormControl } from '@angular/forms';
-import { Itemcompra } from 'src/app/classes/itemcompra';
-import { Facturacompra } from 'src/app/classes/facturacompra';
+import { Itemcompra } from '../../classes/itemcompra';
+import { Facturacompra } from '../../classes/facturacompra';
 import { Router } from '@angular/router';
 import { share, shareReplay, publishLast, publishReplay } from 'rxjs/operators';
 import { HttpErrorResponse } from '@angular/common/http';
@@ -30,7 +30,7 @@ export class ComprarComponent implements OnInit {
   stockActual: Articulo[] = [];
   items: Itemcompra[] = [];
   seleccion = true;
-  prov: Proveedor;
+  prov: any;
   enviado = false;
 
   drop(event: CdkDragDrop<string[]>) {
@@ -134,8 +134,8 @@ export class ComprarComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.dataSrv.getArticulos().subscribe((a: Articulo[]) => this.stockActual = a);
-    this.dataSrv.getProveedores().subscribe((p: Proveedor[]) => this.proveedores = p);
+    this.dataSrv.getArticulos().subscribe((a: any) => this.stockActual = a);
+    this.dataSrv.getProveedores().subscribe((p: any) => this.proveedores = p);
   }
 
   private calculaFactura() {

@@ -5,10 +5,10 @@ import { ActivatedRoute } from '@angular/router';
 import { Facturaventa } from 'src/app/classes/facturaventa';
 import { Cliente } from 'src/app/classes/cliente';
 
-import { pdfMake } from 'pdfmake/build/pdfmake.js';
+// import { pdfMake } from 'pdfmake/build/pdfmake.js';
 
 // para generar pdfs lado cliente
-// const pdfMake = require('pdfmake/build/pdfmake.js');
+const pdfMake = require('pdfmake/build/pdfmake.js');
 const pdfFonts = require('pdfmake/build/vfs_fonts.js');
 pdfMake.vfs = pdfFonts.pdfMake.vfs;
 
@@ -263,8 +263,10 @@ export class VerFacturaventaComponent implements OnInit {
     header.push({ text: 'Precio Uni', style: 'tableHeader' });
     header.push({ text: 'IVA %', style: 'tableHeader' });
     header.push({ text: 'Subtotal', style: 'tableHeader' });
+
     todoslositems.push(header);
-    this.factura.items.forEach(function (item) {
+
+    this.factura.items.forEach(function (item: any) {
       const unItem = [];
       unItem.push({ text: item.cantidad });
       unItem.push({ text: item.codigoproducto });

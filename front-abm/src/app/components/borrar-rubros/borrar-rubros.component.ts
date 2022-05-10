@@ -1,18 +1,18 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 
-import { Rubro } from 'src/app/classes/rubro';
-import { DataService } from 'src/app/services/data.service';
+import { Rubro } from '../../classes/rubro';
+import { DataService } from '../../services/data.service';
 
 @Component({
   selector: 'app-borrar-rubros',
   templateUrl: './borrar-rubros.component.html',
-  styleUrls: ['./borrar-rubros.component.css']
+  styleUrls: []
 })
 export class BorrarRubrosComponent implements OnInit {
-  rub: Rubro;
+  rub: any;
   titulo = '';
-  rubrodefault;
+  rubrodefault: any;
 
   constructor(
     private dataSrv: DataService,
@@ -20,7 +20,7 @@ export class BorrarRubrosComponent implements OnInit {
     private router: Router) { }
 
   ngOnInit() {
-    this.dataSrv.getRubro(+this.ruta.snapshot.paramMap.get('id')).subscribe(
+    this.dataSrv.getRubro(+this.ruta.snapshot.paramMap.get('id')!).subscribe(
       (r: Rubro) => {
         this.rub = r;
       },

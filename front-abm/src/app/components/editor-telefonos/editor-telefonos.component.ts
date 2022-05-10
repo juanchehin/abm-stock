@@ -1,25 +1,25 @@
 import { Component, OnInit } from '@angular/core';
-import { Telefono } from 'src/app/classes/telefono';
+import { Telefono } from '../../classes/telefono';
 import { FormBuilder } from '@angular/forms';
-import { DataService } from 'src/app/services/data.service';
+import { DataService } from '../../services/data.service';
 import { ActivatedRoute, Router, UrlSegment } from '@angular/router';
-import { AuthService } from 'src/app/services/auth.service';
+import { AuthService } from '../../services/auth.service';
 import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-editor-telefonos',
   templateUrl: './editor-telefonos.component.html',
-  styleUrls: ['./editor-telefonos.component.css']
+  styleUrls: []
 })
 export class EditorTelefonosComponent implements OnInit {
-  tel: Telefono;
+  tel: any;
   titulo = '';
   nuevo = false;
   nuevoprov = false;
   nuevocli = false;
   enviado = false;
   Id = 0;
-  path: UrlSegment;
+  path: any;
 
     constructor(
     private location: Location,
@@ -37,10 +37,10 @@ export class EditorTelefonosComponent implements OnInit {
       this.tel = new Telefono();
       this.tel.id = -1;
       this.tel.contacto = '';
-      this.Id = +this.ruta.snapshot.paramMap.get('id'); // resguardamos id del proveedor o cliente
+      this.Id = +this.ruta.snapshot.paramMap.get('id')!; // resguardamos id del proveedor o cliente
       this.titulo = 'Nuevo Telefono';
     } else {
-      this.dataSrv.getTelefono(+this.ruta.snapshot.paramMap.get('id')).subscribe(
+      this.dataSrv.getTelefono(+this.ruta.snapshot.paramMap.get('id')!).subscribe(
         (t: Telefono) => {
           this.tel = t;
         },

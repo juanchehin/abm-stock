@@ -1,9 +1,8 @@
 // https://github.com/bpampuch/pdfmake
 import { Component, OnInit } from '@angular/core';
-import { DataService } from 'src/app/services/data.service';
+import { DataService } from '../../services/data.service';
 import { ActivatedRoute } from '@angular/router';
-import { Facturacompra } from 'src/app/classes/facturacompra';
-import { Proveedor } from 'src/app/classes/proveedor';
+import { Proveedor } from '../../classes/proveedor';
 
 // para generar pdfs lado cliente
 const pdfMake = require('pdfmake/build/pdfmake.js');
@@ -13,7 +12,7 @@ pdfMake.vfs = pdfFonts.pdfMake.vfs;
 @Component({
   selector: 'app-ver-facturacompra',
   templateUrl: './ver-facturacompra.component.html',
-  styleUrls: ['./ver-facturacompra.component.css']
+  styleUrls: []
 })
 export class VerFacturacompraComponent implements OnInit {
 

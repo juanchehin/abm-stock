@@ -2,19 +2,19 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, FormControl } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 
-import { AuthService } from 'src/app/services/auth.service';
-import { DataService } from 'src/app/services/data.service';
-import { Proveedor } from 'src/app/classes/proveedor';
+import { AuthService } from '../../services/auth.service';
+import { DataService } from '../../services/data.service';
+import { Proveedor } from '../../classes/proveedor';
 
 @Component({
   selector: 'app-editor-proveedores',
   templateUrl: './editor-proveedores.component.html',
-  styleUrls: ['./editor-proveedores.component.css']
+  styleUrls: []
 })
 export class EditorProveedoresComponent implements OnInit {
 
   proveedorForm = new FormGroup({ ivaControl: new FormControl() });
-  pro: Proveedor;
+  pro: any;
   nuevo = false;
   titulo = '';
   enviado = false;
@@ -38,7 +38,7 @@ export class EditorProveedoresComponent implements OnInit {
       // Fijamos condicion de iva en RI
       this.proveedorForm.controls['ivaControl'].setValue('Responsable Inscripto');
     } else {
-      this.dataSrv.getProveedor(+this.ruta.snapshot.paramMap.get('id')).subscribe(
+      this.dataSrv.getProveedor(+this.ruta.snapshot.paramMap.get('id')!).subscribe(
         (p) => {
           this.pro = p;
           this.proveedorForm.controls['ivaControl'].setValue(p.condicioniva);

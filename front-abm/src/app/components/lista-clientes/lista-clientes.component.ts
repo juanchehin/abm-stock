@@ -1,12 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 
-import { DataService } from 'src/app/services/data.service';
-import { AuthService } from 'src/app/services/auth.service';
+import { DataService } from '../../services/data.service';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-lista-clientes',
   templateUrl: './lista-clientes.component.html',
-  styleUrls: ['./lista-clientes.component.css']
+  styleUrls: []
 })
 export class ListaClientesComponent implements OnInit {
 

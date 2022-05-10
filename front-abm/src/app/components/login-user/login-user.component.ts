@@ -1,13 +1,13 @@
 import { Component, OnInit } from '@angular/core';
-import { AuthService } from 'src/app/services/auth.service';
+import { AuthService } from '../../services/auth.service';
 import { Router } from '@angular/router';
-import { Usuario } from 'src/app/classes/usuario';
+import { Usuario } from '../../classes/usuario';
 
 
 @Component({
   selector: 'app-login-user',
   templateUrl: './login-user.component.html',
-  styleUrls: ['./login-user.component.css']
+  styleUrls: []
 })
 
 export class LoginUserComponent implements OnInit {
@@ -23,7 +23,7 @@ export class LoginUserComponent implements OnInit {
   ingresar() {
     this.enviado = true;
     this.authSrv.login(this.usuario.nombre, this.usuario.clave)
-      .subscribe((u: Usuario) => {
+      .subscribe((u: any) => {
         if (u === null) {
           console.log(u);
           this.error = true;

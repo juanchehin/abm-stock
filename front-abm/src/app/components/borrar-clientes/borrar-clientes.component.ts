@@ -1,16 +1,16 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 
-import { Cliente } from 'src/app/classes/cliente';
-import { DataService } from 'src/app/services/data.service';
+import { Cliente } from '../../classes/cliente';
+import { DataService } from '../../services/data.service';
 
 @Component({
   selector: 'app-borrar-clientes',
   templateUrl: './borrar-clientes.component.html',
-  styleUrls: ['./borrar-clientes.component.css']
+  styleUrls: []
 })
 export class BorrarClientesComponent implements OnInit {
-  clie: Cliente;
+  clie: any;
   titulo = '';
 
   constructor(
@@ -19,7 +19,7 @@ export class BorrarClientesComponent implements OnInit {
     private router: Router) { }
 
   ngOnInit() {
-    this.dataSrv.getCliente(+this.ruta.snapshot.paramMap.get('id')).subscribe(
+    this.dataSrv.getCliente(+this.ruta.snapshot.paramMap.get('id')!).subscribe(
       (c: Cliente) => {
         this.clie = c;
       },

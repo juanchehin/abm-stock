@@ -1,9 +1,9 @@
 // https://github.com/bpampuch/pdfmake
 import { Component, OnInit } from '@angular/core';
-import { DataService } from 'src/app/services/data.service';
+import { DataService } from '../../services/data.service';
 import { ActivatedRoute } from '@angular/router';
-import { Facturaventa } from 'src/app/classes/facturaventa';
-import { Cliente } from 'src/app/classes/cliente';
+import { Facturaventa } from '../../classes/facturaventa';
+import { Cliente } from '../../classes/cliente';
 
 // para generar pdfs lado cliente
 const pdfMake = require('pdfmake/build/pdfmake.js');
@@ -13,15 +13,15 @@ pdfMake.vfs = pdfFonts.pdfMake.vfs;
 @Component({
   selector: 'app-ver-facturaventa',
   templateUrl: './ver-facturaventa.component.html',
-  styleUrls: ['./ver-facturaventa.component.css']
+  styleUrls: []
 })
 
 export class VerFacturaventaComponent implements OnInit {
-  factura: Facturaventa;
-  clie: Cliente;
+  factura: any;
+  clie: any;
   titulo = '';
   coniva = false;
-  factura_PDF;
+  factura_PDF: any;
 
   // https://developer.mozilla.org/es/docs/Web/JavaScript/Referencia/Objetos_globales/NumberFormat
   Moneda = new Intl.NumberFormat('es-AR', {
@@ -36,7 +36,7 @@ export class VerFacturaventaComponent implements OnInit {
   constructor(private dataSrv: DataService, private ruta: ActivatedRoute) { }
 
   ngOnInit() {
-    this.dataSrv.getFacturaCliente(+this.ruta.snapshot.paramMap.get('id')).subscribe(
+    this.dataSrv.getFacturaCliente(+this.ruta.snapshot.paramMap.get('id')!).subscribe(
       (f: Facturaventa) => {
         this.factura = f;
         this.dataSrv.getCliente(+f.clienteId).subscribe((c: Cliente) => { this.clie = c; });
@@ -233,12 +233,12 @@ export class VerFacturaventaComponent implements OnInit {
 
   }
 
-  private formatoNroFactura(sucursal, numero) {
+  private formatoNroFactura(sucursal: any, numero: any) {
     return ('0000' + sucursal).substr(-4) + '-' + ('00000000' + numero).substr(-8);
   }
 
 
-  private formatoFecha(date) {
+  private formatoFecha(date: any) {
     return new Intl.DateTimeFormat('es-AR').format(new Date(date));
 
     /*  const d = new Date(date);
@@ -262,7 +262,7 @@ export class VerFacturaventaComponent implements OnInit {
     header.push({ text: 'IVA %', style: 'tableHeader' });
     header.push({ text: 'Subtotal', style: 'tableHeader' });
     todoslositems.push(header);
-    this.factura.items.forEach(function (item) {
+    this.factura.items.forEach( (item: any) => {
       const unItem = [];
       unItem.push({ text: item.cantidad });
       unItem.push({ text: item.codigoproducto });

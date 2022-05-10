@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
-import { Facturaventa } from 'src/app/classes/facturaventa';
-import { Cliente } from 'src/app/classes/cliente';
-import { Articulo } from 'src/app/classes/articulo';
-import { Itemventa } from 'src/app/classes/itemventa';
+import { Facturaventa } from '../../classes/facturaventa';
+import { Cliente } from '../../classes/cliente';
+import { Articulo } from '../../classes/articulo';
+import { Itemventa } from '../../classes/itemventa';
 import { CdkDragDrop, transferArrayItem, moveItemInArray } from '@angular/cdk/drag-drop';
-import { DataService } from 'src/app/services/data.service';
+import { DataService } from '../../services/data.service';
 import { Router } from '@angular/router';
 import { HttpErrorResponse } from '@angular/common/http';
 
@@ -24,7 +24,7 @@ export class VenderComponent implements OnInit {
   stockActual: Articulo[] = [];
   items: Itemventa[] = [];
   seleccion = true;
-  clie: Cliente;
+  clie: any;
   enviado = false;
 
   drop(event: CdkDragDrop<string[]>) {
@@ -130,8 +130,8 @@ export class VenderComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.dataSrv.getStock().subscribe((a: Articulo[]) => this.stockActual = a);
-    this.dataSrv.getClientes().subscribe((c: Cliente[]) => this.clientes = c);
+    this.dataSrv.getStock().subscribe((a: any) => this.stockActual = a);
+    this.dataSrv.getClientes().subscribe((c: any) => this.clientes = c);
   }
 
   private calculaFactura() {

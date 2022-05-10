@@ -1,16 +1,16 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 
-import { Proveedor } from 'src/app/classes/proveedor';
-import { DataService } from 'src/app/services/data.service';
+import { Proveedor } from '../../classes/proveedor';
+import { DataService } from '../../services/data.service';
 
 @Component({
   selector: 'app-borrar-proveedores',
   templateUrl: './borrar-proveedores.component.html',
-  styleUrls: ['./borrar-proveedores.component.css']
+  styleUrls: []
 })
 export class BorrarProveedoresComponent implements OnInit {
-  prov: Proveedor;
+  prov: any;
   titulo = '';
 
   constructor(
@@ -19,7 +19,7 @@ export class BorrarProveedoresComponent implements OnInit {
     private router: Router) { }
 
   ngOnInit() {
-    this.dataSrv.getProveedor(+this.ruta.snapshot.paramMap.get('id')).subscribe(
+    this.dataSrv.getProveedor(+this.ruta.snapshot.paramMap.get('id')!).subscribe(
       (p: Proveedor) => {
         this.prov = p;
       },

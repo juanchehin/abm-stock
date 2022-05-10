@@ -1,29 +1,29 @@
 import { Component, OnInit } from '@angular/core';
-import { DataService } from 'src/app/services/data.service';
-import { Proveedor } from 'src/app/classes/proveedor';
-import { Facturacompra } from 'src/app/classes/facturacompra';
+import { DataService } from '../../services/data.service';
+import { Proveedor } from '../../classes/proveedor';
+import { Facturacompra } from '../../classes/facturacompra';
 import { FormGroup, FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-lista-facturacompra',
   templateUrl: './lista-facturacompra.component.html',
-  styleUrls: ['./lista-facturacompra.component.css']
+  styleUrls: []
 })
 
 export class ListaFacturacompraComponent implements OnInit {
   listacompraForm = new FormGroup({ proveedorControl: new FormControl() });
   titulo = 'Listado Facturas Compras';
-  proveedores: Proveedor[];
+  proveedores: any;
   facturas: Facturacompra[] = [];
-  poolfacturas: Facturacompra[];
-  prov: Proveedor;
+  poolfacturas: any;
+  prov: any;
 
   constructor(private dataSrv: DataService) { }
 
   cambiaProveedor() {
     const id = this.listacompraForm.controls['proveedorControl'].value;
     if (id !== 0) {
-      this.facturas = this.poolfacturas.filter(function (factura) {
+      this.facturas = this.poolfacturas.filter(function (factura: any) {
         return factura.proveedorId === id;
       });
     } else {
@@ -32,7 +32,7 @@ export class ListaFacturacompraComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.dataSrv.getProveedores().subscribe((p: Proveedor[]) => this.proveedores = p);
+    this.dataSrv.getProveedores().subscribe((p: any) => this.proveedores = p);
     this.dataSrv.getFacturasCompras().subscribe(
       (f: Facturacompra[]) => {
         this.poolfacturas = f;

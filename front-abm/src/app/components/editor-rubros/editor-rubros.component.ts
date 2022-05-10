@@ -1,17 +1,17 @@
 import { Component, OnInit } from '@angular/core';
-import { Rubro } from 'src/app/classes/rubro';
+import { Rubro } from '../../classes/rubro';
 import { FormBuilder } from '@angular/forms';
-import { DataService } from 'src/app/services/data.service';
+import { DataService } from '../../services/data.service';
 import { ActivatedRoute, Router } from '@angular/router';
-import { AuthService } from 'src/app/services/auth.service';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-editor-rubros',
   templateUrl: './editor-rubros.component.html',
-  styleUrls: ['./editor-rubros.component.css']
+  styleUrls: []
 })
 export class EditorRubrosComponent implements OnInit {
-  rub: Rubro;
+  rub: any;
   titulo = '';
   nuevo = false;
   enviado = false;
@@ -31,7 +31,7 @@ export class EditorRubrosComponent implements OnInit {
       this.rub.nombre = '';
       this.titulo = 'Nuevo Rubro';
     } else {
-      this.dataSrv.getRubro(+this.ruta.snapshot.paramMap.get('id')).subscribe(
+      this.dataSrv.getRubro(+this.ruta.snapshot.paramMap.get('id')!).subscribe(
         (r: Rubro) => {
           this.rub = r;
         },

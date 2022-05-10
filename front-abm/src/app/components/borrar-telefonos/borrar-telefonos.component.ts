@@ -2,19 +2,19 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Location } from '@angular/common';
 
-import { Telefono } from 'src/app/classes/telefono';
-import { DataService } from 'src/app/services/data.service';
+import { Telefono } from '../../classes/telefono';
+import { DataService } from '../../services/data.service';
 
 @Component({
   selector: 'app-borrar-telefonos',
   templateUrl: './borrar-telefonos.component.html',
-  styleUrls: ['./borrar-telefonos.component.css']
+  styleUrls: []
 })
 export class BorrarTelefonosComponent implements OnInit {
 
-  tel: Telefono;
+  tel: any;
   titulo = '';
-  telefonodefault;
+  telefonodefault: any;
 
   constructor(
     private location: Location,
@@ -23,7 +23,7 @@ export class BorrarTelefonosComponent implements OnInit {
     private router: Router) { }
 
   ngOnInit() {
-    this.dataSrv.getTelefono(+this.ruta.snapshot.paramMap.get('id')).subscribe(
+    this.dataSrv.getTelefono(+this.ruta.snapshot.paramMap.get('id')!).subscribe(
       (t: Telefono) => {
         this.tel = t;
       },
