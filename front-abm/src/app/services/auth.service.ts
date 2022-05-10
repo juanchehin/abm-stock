@@ -13,7 +13,7 @@ const httpOptions = { headers: new HttpHeaders({ 'Content-Type': 'application/js
 
 export class AuthService {
   user = new Usuario();
-  redirectUrl: string;
+  redirectUrl: any;
   // en lugar de seguir la guia de angular
   // https://angular.io/guide/router#teach-authguard-to-authenticate
   // fijo el rol N como no logueado en el constructor de la clase usuario

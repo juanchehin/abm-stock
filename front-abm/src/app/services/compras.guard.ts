@@ -14,7 +14,7 @@ export class ComprasGuard implements CanActivate {
     next: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): boolean {
 
-    if (this.authSrv.isCompra || this.authSrv.isAdmin) { return true; }
+    if (this.authSrv.isCompra || this.authSrv.isAdmin!) { return true; }
 
     // resguardamos la direccion pedida
     this.authSrv.redirectUrl = state.url;

@@ -19,7 +19,7 @@ const baseUrl = 'http://localhost:3000';
 export class DataService {
   constructor(private httpCli: HttpClient) { }
 
-  private extractData(res: Response) {
+  private extractData(res: any) {
     const body = res;
     return body || {};
   }
@@ -135,12 +135,12 @@ export class DataService {
     return this.httpCli.delete(baseUrl + '/api/telefonoborrar/' + id, httpOptions);
   }
 
-  asociarTelefonoProveedor(idTel, idProv) {
+  asociarTelefonoProveedor(idTel: any, idProv: any) {
     const body = { idtel: idTel, idprov: idProv };
     return this.httpCli.post(baseUrl + '/api/telefonoproveedor/', JSON.stringify(body), httpOptions);
   }
 
-  asociarTelefonoCliente(idTel, idCli) {
+  asociarTelefonoCliente(idTel: any, idCli: any) {
     const body = { idtel: idTel, idcli: idCli };
     return this.httpCli.post(baseUrl + '/api/telefonocliente/', JSON.stringify(body), httpOptions);
   }
