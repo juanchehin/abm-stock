@@ -5,10 +5,12 @@ import { ActivatedRoute } from '@angular/router';
 import { Facturaventa } from '../../classes/facturaventa';
 import { Cliente } from '../../classes/cliente';
 
-// para generar pdfs lado cliente
-const pdfMake = require('pdfmake/build/pdfmake.js');
-const pdfFonts = require('pdfmake/build/vfs_fonts.js');
-pdfMake.vfs = pdfFonts.pdfMake.vfs;
+import * as pdfMake from "pdfmake/build/pdfmake";
+// // instead of import the default fonts  (import pdfFonts from "pdfmake/build/vfs_fonts";), you import your custom fonts
+import * as pdfFonts from "pdfmake/build/vfs_fonts.js"; // The path of your custom fonts
+
+(pdfMake as any).vfs = pdfFonts.pdfMake.vfs;
+
 
 @Component({
   selector: 'app-ver-facturaventa',
